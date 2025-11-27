@@ -146,7 +146,7 @@ class IEmbeddingService(ABC):
         pass
 ```
 
-2) **Concrete Gemini implementation**
+2) **Gemini implementation**
 
 ```python
 class GeminiEmbeddingService(IEmbeddingService):
@@ -164,7 +164,7 @@ class GeminiEmbeddingService(IEmbeddingService):
         ...
 ```
 
-3) **Main orchestration uses the interface method**
+3) **Main uses the interface method**
 
 ```python
 # --- MAIN EXECUTION ---
@@ -184,7 +184,7 @@ def main():
 ```
 
 **How DIP was implemented:**
-- High‑level pipeline code depends on `IEmbeddingService`, not on a concrete embedding helper or provider.
+- High‑level code depends on `IEmbeddingService`, not on an embedding helper or provider.
 - `GeminiEmbeddingService` implements the interface; a different provider or a mock could implement the same interface without changing the main logic.
 - Embedding parameters are encapsulated in the concrete provider; main flow only needs to know the provider implements the abstract `generate_embeddings` method.
 
