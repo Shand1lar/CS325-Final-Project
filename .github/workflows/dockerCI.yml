@@ -1,0 +1,33 @@
+name: Python CI
+
+
+# Look at the directory structure in the readme file
+# This file is should to be inside .github/workflows
+# This file give directions to GitHub actions on what and how to run the
+# CI pipeline
+
+# "on" a push to the branch main this CI pipeline will start
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
+# We will run the test cases inside of a container which will be inside of another
+# machine inside of Github. The runs-on parameter given below is the OS of the environment 
+# where your container will run. The GitHub will automatically pull your container from Docker Hub
+
+jobs:
+  test-in-container:
+    runs-on: ubuntu-latest
+    container:
+      image: shand1lar/cs325finalproject:latest
+      # all dependencies (pytest) are already in this docker image hosted as public image in YOUR Docker Hub account
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Run tests in container
+        run: pytest
