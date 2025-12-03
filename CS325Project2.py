@@ -32,7 +32,7 @@ EMBEDDING_API_KEY = ""   # !!! Google AI stuido API Key !!!
 EMBEDDING_URL = "https://generativelanguage.googleapis.com/v1beta/models" 
 EMBEDDING_MODEL = "text-embedding-004" 
 
-# --- JOB SEARCH CONFIG (Stage 1) ---
+# --- JOB SEARCH string ------------------------------------------------
 JOB_SEARCH_QUERY = "Cyber Security jobs in chicago" 
 
 # =================================================================================================
@@ -198,6 +198,7 @@ class DataProcessor:
 
     def preprocess_job_data(self, raw_data, output_file):
         """Cleans job data fields and combines them into a single text field for embedding."""
+        
         print("\n--- STAGE 2: PREPROCESSING JOB DATA ---")
         jobs = raw_data.get('data', [])
         if not jobs:
