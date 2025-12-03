@@ -89,9 +89,12 @@ COPY requirements.txt /home
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
+
+CMD {"python", "CS325Project2.py"}
 ```
 
 Ensure you have all the files nescessary in the same folder including your `requirements.txt`
+The CMD line will run the code that is in `CS325Project2.py`. Ensure you have *Configured API keys and settings* in the `CS325Project2.py`.
 
 ```bash
 # Build an image and tag it as "CS325Project2:latest" (change the tag if you want)
